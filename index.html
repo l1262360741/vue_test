@@ -27,6 +27,8 @@
                 2.js语句
                         (1).if
                         (2).for
+        v-bind里可以用表达式 数据只能从data流向页面
+        v-model只能应用在表单类元素上（输入类元素）数据双向绑定
 -->
 
 <body>
@@ -35,13 +37,17 @@
         hello {{message}}
     </div> -->
 
-    <div id="root">
+    <!-- <div id="root">
         <h1>插值语法</h1>
         <h3>你好{{message}}</h3>
         <hr>
         <h1>指令语法</h1>
-        <!-- v-bind里可以用表达式 -->
         <a v-bind:href="url">111</a>
+    </div> -->
+
+    <div id="root">
+        单向数据绑定：<input type="text" :value="message"><br>
+        双向数据绑定：<input type="text" v-model:value="message">
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false
