@@ -30,10 +30,18 @@
 -->
 
 <body>
-
+    <!-- 
     <div id="root">
         hello {{message}}
-        <!-- 只能写js表达式 -->
+    </div> -->
+
+    <div id="root">
+        <h1>插值语法</h1>
+        <h3>你好{{message}}</h3>
+        <hr>
+        <h1>指令语法</h1>
+        <!-- v-bind里可以用表达式 -->
+        <a v-bind:href="url">111</a>
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false
@@ -41,7 +49,8 @@
         new Vue({ //先到先得
             el: '#root',
             data: {
-                message: "北京昌平"
+                message: '北京昌平',
+                url: 'http://www.baidu.com'
             }
         })
     </script>
