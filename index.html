@@ -45,18 +45,34 @@
         <a v-bind:href="url">111</a>
     </div> -->
 
-    <div id="root">
+    <!-- <div id="root">
         单向数据绑定：<input type="text" :value="message"><br>
         双向数据绑定：<input type="text" v-model:value="message">
+    </div> -->
+    <div id="root">
+        <h1>hello {{message}}</h1>
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false
         //创建vue实例
-        new Vue({ //先到先得
+        // var v = new Vue({ //先到先得
+        //     // el: '#root', 第一种写法
+        //     data: {
+        //         message: '北京昌平',
+        //         url: 'http://www.baidu.com'
+        //     }
+        // })
+        // console.log(v);
+        // v.$mount('#root') //原型 第二种写法 挂载
+        new Vue({
             el: '#root',
-            data: {
-                message: '北京昌平',
-                url: 'http://www.baidu.com'
+            //函数式data
+            data: function () {
+                //data(){} 简写
+                console.log(this) //此处this是vue实例对象 （不能使用箭头函数）
+                return {
+                    name: '111'
+                }
             }
         })
     </script>
