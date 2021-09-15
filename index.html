@@ -29,6 +29,14 @@
                         (2).for
         v-bind里可以用表达式 数据只能从data流向页面
         v-model只能应用在表单类元素上（输入类元素）数据双向绑定
+
+        vue中事件修饰符
+        1.prevent 阻止默认事件
+        2.stop阻止事件冒泡
+        3.once 触发一次
+        4.capture 捕获模式
+        5.self 只有event.target是当前操作元素才触发事件
+        6.passive 事件的默认行为立即执行，无修等待事件毁掉执行完毕
 -->
 
 <body>
@@ -142,6 +150,7 @@
         // 为每一个添加到vm上的属性指定一个getter / setter
         // 在getter / setter内部去操作data中对应的属性
         //$event占位事件里的event
+        // @click.prevent修饰阻止默认事件
     </script>
 </body>
 
