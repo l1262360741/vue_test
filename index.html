@@ -50,7 +50,11 @@
         双向数据绑定：<input type="text" v-model:value="message">
     </div> -->
     <div id="root">
-        <h1>hello {{message}}</h1>
+        <h1>学校名称:{{name}}</h1>
+        <h1>学校地址:{{address}}</h1>
+        <h1>测试1:{{$options}}</h1>
+        <h1>学校地址:{{address}}</h1>
+        <h1>学校地址:{{address}}</h1>
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false
@@ -64,17 +68,30 @@
         // })
         // console.log(v);
         // v.$mount('#root') //原型 第二种写法 挂载
-        new Vue({
-            el: '#root',
-            //函数式data
-            data: function () {
-                //data(){} 简写
-                console.log(this) //此处this是vue实例对象 （不能使用箭头函数）
+        // new Vue({
+        //     el: '#root',
+        //     //函数式data
+        //     data: function () {
+        //         //data(){} 简写
+        //         console.log(this) //此处this是vue实例对象 （不能使用箭头函数）
+        //         return {
+        //             name: '111'
+        //         }
+        //     }
+        // })
+        // MVVM
+        // 1. M： model 模型 对应data中的数据
+        // 2. V： View 视图 模板
+        // 3. Vm： viewmodel 视图模型 Vue实例对象 view and model bind with viewModel
+        var vm = new Vue({
+            el: root,
+            data() {
                 return {
-                    name: '111'
+                    name: '1111'
                 }
             }
         })
+        console.log(vm)
     </script>
 </body>
 
