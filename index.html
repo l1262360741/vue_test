@@ -49,13 +49,13 @@
         单向数据绑定：<input type="text" :value="message"><br>
         双向数据绑定：<input type="text" v-model:value="message">
     </div> -->
-    <div id="root">
+    <!-- <div id="root">
         <h1>学校名称:{{name}}</h1>
         <h1>学校地址:{{address}}</h1>
-        <h1>测试1:{{$options}}</h1>
+        <h1>测试1:{{$options}}</h1> 
         <h1>学校地址:{{address}}</h1>
         <h1>学校地址:{{address}}</h1>
-    </div>
+    </div> -->
     <script type="text/javascript">
         Vue.config.productionTip = false
         //创建vue实例
@@ -83,15 +83,36 @@
         // 1. M： model 模型 对应data中的数据
         // 2. V： View 视图 模板
         // 3. Vm： viewmodel 视图模型 Vue实例对象 view and model bind with viewModel
-        var vm = new Vue({
-            el: root,
-            data() {
-                return {
-                    name: '1111'
-                }
+        // var vm = new Vue({
+        //     el: root,
+        //     data() {
+        //         return {
+        //             name: '1111'
+        //         }
+        //     }
+        // })
+        // console.log(vm);
+        // 双花括号里可以拿到vm的所有东西
+        //回顾Object.defineproperty方法;
+        let number = 18;
+        let person = {
+            name: '张三'
+        };
+        console.log(person)
+        Object.defineProperty(person, 'age', {
+            // value: 18,
+            enumerable: true, //控制枚举
+            Writable: true, //控制修改
+            configurable: true, //控制属性是否可以删除
+            //当有人读取person的age属性时，get函数就会被调用，且返回的就是age的值；
+            get: function () {
+                return number
+            },
+            //当有人修改person的age属性，set函数就会被调用，且会收到修改值
+            set: function (value) {
+                number = value
             }
         })
-        console.log(vm)
     </script>
 </body>
 
