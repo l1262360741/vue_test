@@ -58,8 +58,11 @@
         双向数据绑定：<input type="text" v-model:value="message">
     </div> -->
     <div id="root">
-        <h1>学校名称:{{name}}</h1>
-        <button @click="showsth(66,$event)"></button>
+        <h1>人员列表</h1>
+        <input type="text" v-model="keywords">
+        <ul v-for="p in fill" :key="p.id">
+            <li>{{p.id}}-{{p.name}}-{{p.age}}</li>
+        </ul>
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false
@@ -136,14 +139,57 @@
         const vm = new Vue({
             el: '#root',
             data: {
-                name: '111',
-                address: '2222'
+                persons: [{
+                        id: '001',
+                        name: '林更新',
+                        age: 21
+                    },
+                    {
+                        id: '002',
+                        name: '李大嘴',
+                        age: 55
+                    },
+                    {
+                        id: '003',
+                        name: '杜晨曦',
+                        age: 34
+                    },
+                    {
+                        id: '004',
+                        name: '你大爸',
+                        age: 24
+                    },
+                ],
+                keywords: '',
+                fil: []
             },
-            methods: {
-                showsth(e) {
-                    alert('hello')
-                }
+            // methods: {
+            //     showsth(e) {
+            //         alert('hello')
+            //     }
+            // }
+            computed: {
+                // fill() {
+                //     return this.persons.filter((p) => {
+                //         return p.name.indexOf(this.keywords) > -1
+                //     })
+                // }
+            },
+            watch: {
+                // keywords: {
+                //     immediate: true,
+
+                //     handler(val) {
+                //         setTimeout(() => {
+                //             this.fil = this.persons.filter((p) => {
+                //                 return p.name.indexOf(val) > -1
+                //             })
+                //         }, 1000);
+
+                //     }
+                // }
             }
+
         })
         // vue中数据代理， 通过vm对象来代理data对象中属性的操作
         // 基本原理 通过object.defineProperty() 把data对象中所有属性添加到vm上，
@@ -151,6 +197,16 @@
         // 在getter / setter内部去操作data中对应的属性
         //$event占位事件里的event
         // @click.prevent修饰阻止默认事件
+
+        //计算属性与监视 
+        // computed有缓存 依赖的数据发生改变 才调用get
+        // 要用的属性不存在， 要通过已有的属性计算得来；
+        // 原理跟双向一样
+        // 优势， 缓存机制， 效率更高， 调试方便
+        // 备注： 计算属性最终会出现在vm上， 直接读取使用即可
+        // 如果计算属性要被修改， 必须写set函数去影响修改, 且set中要引起计算时依赖的数据发生变化
+
+        //监视属性 watch
     </script>
 </body>
 
