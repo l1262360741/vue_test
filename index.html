@@ -59,10 +59,12 @@
     </div> -->
     <div id="root">
         <h1>人员列表</h1>
-        <input type="text" v-model="keywords">
+        <span v-if="student.age">年龄 <span>{{student.age}}</span></span>
+        <button @click="showSth">点击显示年龄</button>
+        <!-- <input type="text" v-model="keywords">
         <ul v-for="p in fill" :key="p.id">
             <li>{{p.id}}-{{p.name}}-{{p.age}}</li>
-        </ul>
+        </ul> -->
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false
@@ -161,13 +163,17 @@
                     },
                 ],
                 keywords: '',
-                fil: []
+                fil: [],
+                student: {
+                    name: '11',
+                    sex: 'male'
+                }
             },
-            // methods: {
-            //     showsth(e) {
-            //         alert('hello')
-            //     }
-            // }
+            methods: {
+                showSth() {
+                    Vue.set(this.student, 'age', '32')
+                }
+            },
             computed: {
                 // fill() {
                 //     return this.persons.filter((p) => {
